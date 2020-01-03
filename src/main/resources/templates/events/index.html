@@ -8,13 +8,17 @@
 <table class="table table-striped">
     <thead>
     <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Description</th>
+        <th>Contact E-mail</th>
     </tr>
     </thead>
     <tr th:each=" event : ${events}">
+        <td th:text="${event.id}"></td>
         <td th:text="${event.eventName}"></td>
         <td th:text="${event.eventDescription}"></td>
+        <td th:text="${event.contactEmail}"></td>
     </tr>
 </table>
 
