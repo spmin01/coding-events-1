@@ -8,8 +8,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Chris Bay
@@ -28,7 +26,6 @@ public class EventController {
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
-        model.addAttribute(new Event());
         return "events/create";
     }
 
@@ -58,6 +55,5 @@ public class EventController {
 
         return "redirect:";
     }
-
 
 }
