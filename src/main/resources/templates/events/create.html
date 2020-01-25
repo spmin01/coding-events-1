@@ -8,30 +8,30 @@
 <form method="post">
     <div class="form-group">
         <label>Name
-            <input th:field="${event.eventName}" class="form-control">
+            <input th:field="${event.name}" class="form-control">
         </label>
-        <p class="error" th:errors="${event.eventName}"></p>
+        <p class="error" th:errors="${event.name}"></p>
     </div>
     <div class="form-group">
         <label>Description
-            <input th:field="${event.eventDescription}" class="form-control">
+            <input th:field="${event.description}" class="form-control">
         </label>
-        <p class="error" th:errors="${event.eventDescription}"></p>
+        <p class="error" th:errors="${event.description}"></p>
     </div>
     <div class="form-group">
-        <label>Contact E-mail
+        <label>Contact Email
             <input th:field="${event.contactEmail}" class="form-control">
         </label>
         <p class="error" th:errors="${event.contactEmail}"></p>
     </div>
     <div class="form-group">
         <label>Type
-            <select th:field="${event.type}">
-                <option th:each="type : ${types}"
-                        th:value="${type}"
-                        th:text="${type.displayName}"
-                ></option>
-            </select>
+        <select th:field="${event.type}">
+            <option th:each="type : ${types}"
+                    th:value="${type}"
+                    th:text="${type.displayName}"
+            ></option>
+        </select>
         </label>
     </div>
     <div class="form-group">

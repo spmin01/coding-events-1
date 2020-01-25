@@ -37,7 +37,8 @@ public class EventController {
     }
 
     @PostMapping("create")
-    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
+    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent,
+                                         Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
             return "events/create";
@@ -55,9 +56,12 @@ public class EventController {
     }
 
     @PostMapping("delete")
-    public String processDeleteEventForm(@RequestParam(required = false) int[] eventIds) {
-        for(int id : eventIds) {
-            eventRepository.deleteById(id);
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
+
+        if (eventIds != null) {
+            for (int id : eventIds) {
+                eventRepository.deleteById(id);
+            }
         }
 
         return "redirect:";

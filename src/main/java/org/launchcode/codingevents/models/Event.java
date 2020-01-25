@@ -1,57 +1,52 @@
 package org.launchcode.codingevents.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 
+/**
+ * Created by Chris Bay
+ */
 @Entity
-public class Event {
+public class Event extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private int id;
-
-    @NotBlank(message = "Name is required.")
-    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
-    private String eventName;
+    @NotBlank(message = "Name is required")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
+    private String name;
 
     @Size(max = 500, message = "Description too long!")
-    private String eventDescription;
+    private String description;
 
-    @NotBlank(message = "E-mail is required.")
-    @Email(message = "Invalid e-mail. Try again.")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
     private EventType type;
 
-    public Event(String eventName, String eventDescription, String contactEmail, EventType type) {
-        this.eventName = eventName;
-        this.eventDescription = eventDescription;
+    public Event(String name, String description, String contactEmail, EventType type) {
+        this.name = name;
+        this.description = description;
         this.contactEmail = contactEmail;
         this.type = type;
-
     }
 
     public Event() {}
 
-    public String getEventName() {
-        return eventName;
+    public String getName() {
+        return name;
     }
 
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEventDescription() {
-        return eventDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEventDescription(String eventDescription) {
-        this.eventDescription = eventDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getContactEmail() {
@@ -70,25 +65,9 @@ public class Event {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
-
     @Override
     public String toString() {
-        return eventName;
+        return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
